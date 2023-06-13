@@ -51,6 +51,8 @@ fileprivate extension ViewController {
   @objc
   func didTapFeedButton() {
     farm.feed(Cow())
+    farm.feed(Horse())
+    farm.feed(Chicken())
   }
 }
 
