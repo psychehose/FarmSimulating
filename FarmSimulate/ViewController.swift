@@ -55,4 +55,3 @@ fileprivate extension ViewController {
     farm.feed(Chicken())
   }
 }
-

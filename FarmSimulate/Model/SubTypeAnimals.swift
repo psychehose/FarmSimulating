@@ -1,16 +1,63 @@
 //
-//  Animals.swift
+//  SubTypeAnimals.swift
 //  FarmSimulate
 //
 //  Created by 김호세 on 6/13/23.
 //
 
+
 import Foundation
 
+// 다형성을 달성하는 방법 2. 
 
-struct Cow {
+
+class Cow {
   func eat(_ food: Hay) { }
 }
+
+class Horse {
+  func eat(_ food: Carrot) { }
+}
+
+class Chicken {
+  func eat(_ food: Grain) { }
+}
+
+
+struct Farm {
+  func feed(_ animal: Cow) {
+    let alfalfa = Hay.grow()
+    let food = alfalfa.harvest()
+    animal.eat(food)
+
+    print("\(animal) eat \(food)")
+  }
+
+  func feed(_ animal: Horse) {
+    let root = Carrot.grow()
+    let food = root.harvest()
+    animal.eat(food)
+
+    print("\(animal) eat \(food)")
+  }
+
+  func feed(_ animal: Chicken) {
+    let wheat = Grain.grow()
+    let food = wheat.harvest()
+    animal.eat(food)
+
+    print("\(animal) eat \(food)")
+  }
+}
+
+
+
+// 재료 -> 음식
+
+// 소는 Alfalfa가 자라서 수확된 Hay를 먹음
+// 말은 Root가 자라서 수확된 Carrot을 먹음
+// 닭은 Wheat가 자라서 수확된 Grain을 먹음
+
 
 struct Hay {
   static func grow() -> Alfalfa {
@@ -22,44 +69,6 @@ struct Alfalfa {
   func harvest() -> Hay {
     return Hay()
   }
-}
-
-
-
-struct Farm {
-  func feed(_ animal: Cow) {
-    let alfalfa = Hay.grow()
-    // 소는 hay를 먹음
-    let food = alfalfa.harvest()
-    animal.eat(food)
-
-    print("\(animal) eat \(food)")
-  }
-
-  func feed(_ animal: Horse) {
-    let root = Carrot.grow()
-    // 소는 hay를 먹음
-    let food = root.harvest()
-    animal.eat(food)
-
-    print("\(animal) eat \(food)")
-  }
-
-  func feed(_ animal: Chicken) {
-    let wheat = Grain.grow()
-    // 소는 hay를 먹음
-    let food = wheat.harvest()
-    animal.eat(food)
-
-    print("\(animal) eat \(food)")
-  }
-}
-
-
-// 다양한 동물 추가
-
-struct Horse {
-  func eat(_ food: Carrot) { }
 }
 
 struct Carrot {
@@ -74,9 +83,6 @@ struct Root {
   }
 }
 
-struct Chicken {
-  func eat(_ food: Grain) { }
-}
 
 struct Grain {
   static func grow() -> Wheat {
@@ -89,3 +95,4 @@ struct Wheat {
     return Grain()
   }
 }
+
