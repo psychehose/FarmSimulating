@@ -7,13 +7,50 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+
+  private lazy var feedButton: UIButton = {
+    let button = UIButton()
+    button.backgroundColor = .white
+    button.setTitle("Feed your Animals", for: .normal)
+    button.setTitleColor(.black, for: .normal)
+    button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+
+    button.addTarget(self, action: #selector(didTapFeedButton), for: .touchUpInside)
+    return button
+  }()
+  private var farm = Farm()
+
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+
+    setupViews()
+
   }
 
+  func setupViews() {
 
+    feedButton.translatesAutoresizingMaskIntoConstraints = false
+
+    view.addSubview(feedButton)
+
+    NSLayoutConstraint.activate([
+      feedButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      feedButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
+  }
+
+}
+
+
+
+// MARK: Func
+
+fileprivate extension ViewController {
+  @objc
+  func didTapFeedButton() {
+    farm.feed(Cow())
+  }
 }
 

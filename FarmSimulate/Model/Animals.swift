@@ -29,7 +29,21 @@ struct Alfalfa {
 struct Farm {
   func feed(_ animal: Cow) {
     let alfalfa = Hay.grow()
-    let hay = alfalfa.harvest()
-    animal.eat(hay)
+    // 소는 hay를 먹음
+    let food = alfalfa.harvest()
+    animal.eat(food)
+
+    print("\(animal) eat \(food)")
   }
 }
+
+
+// 다양한 동물 추가
+
+//struct Horse {
+//  func eat(_ food: Carrort) { }
+//}
+//
+//struct Chicken {
+//  func eat(_ food: Grain) { }
+//}
