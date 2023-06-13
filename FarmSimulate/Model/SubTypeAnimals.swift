@@ -8,19 +8,30 @@
 
 import Foundation
 
-// 다형성을 달성하는 방법 2. 
+// 다형성을 달성하는 방법 2. Subtype
 
-
-class Cow {
-  func eat(_ food: Hay) { }
+class Animal {
+  func eat(_ food: Any) { fatalError(" Subclass implements 'eat' ") }
 }
 
-class Horse {
-  func eat(_ food: Carrot) { }
+
+class Cow: Animal {
+  override func eat(_ food: Any) {
+    guard let food = food as? Hay else { fatalError("소는 \(food) 를 먹을 수 없습니다.") }
+  }
 }
 
-class Chicken {
-  func eat(_ food: Grain) { }
+class Horse: Animal {
+  override func eat(_ food: Any) {
+    guard let food = food as? Carrot else { fatalError("말은 \(food) 를 먹을 수 없습니다.") }
+  }
+
+}
+
+class Chicken: Animal {
+  override func eat(_ food: Any) {
+    guard let food = food as? Grain else { fatalError("닭은 \(food) 를 먹을 수 없습니다.") }
+  }
 }
 
 
