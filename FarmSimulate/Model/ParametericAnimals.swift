@@ -1,34 +1,47 @@
 ////
-////  SubTypeAnimals.swift
+////  ParametericAnimals.swift
 ////  FarmSimulate
 ////
 ////  Created by 김호세 on 6/13/23.
 ////
 //
 //
+//
 //import Foundation
 //
-//// 다형성을 달성하는 방법 2. Subtype
+//// 다형성을 달성하는 방법 3. Parameteric
 //
-//class Animal<Food> {
-//  func eat(_ food: Food) { fatalError(" Subclass implements 'eat' ") }
+//
+//protocol AnimalFeed {
+//  associatedtype CropType: Crop where CropType.Feed == Self
+//  static func grow() -> CropType
+//}
+//
+//protocol Crop {
+//  associatedtype Feed: AnimalFeed where Feed.CropType == Self
+//  func harvest() -> Feed
+//}
+//
+//protocol Animal {
+//  associatedtype Feed: AnimalFeed
+//  func eat(_ food: Feed)
 //}
 //
 //
-//class Cow: Animal<Hay> {
-//  override func eat(_ food: Hay) {
+//struct Cow: Animal {
+//  func eat(_ food: Hay) {
 //  }
 //}
 //
-//class Horse: Animal<Carrot> {
-//  override func eat(_ food: Carrot) {
-//    
+//struct Horse: Animal {
+//  func eat(_ food: Carrot) {
+//
 //  }
 //
 //}
 //
-//class Chicken: Animal<Grain> {
-//  override func eat(_ food: Grain) {
+//struct Chicken: Animal {
+//  func eat(_ food: Grain) {
 //
 //  }
 //}
