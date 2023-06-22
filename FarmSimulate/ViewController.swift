@@ -19,7 +19,7 @@ final class ViewController: UIViewController {
     button.addTarget(self, action: #selector(didTapFeedButton), for: .touchUpInside)
     return button
   }()
-  private var farm = Farm()
+//  private var farm = Farm()
 
 
   override func viewDidLoad() {
@@ -50,8 +50,8 @@ final class ViewController: UIViewController {
 fileprivate extension ViewController {
   @objc
   func didTapFeedButton() {
-    farm.feed(Cow())
-    farm.feed(Horse())
-    farm.feed(Chicken())
+//    farm.feed(Cow())
+//    farm.feed(Horse())
+//    farm.feed(Chicken())
   }
 }

@@ -11,15 +11,21 @@
 //// 다형성을 달성하는 방법 1. AdHoc
 //
 //struct Cow {
-//  func eat(_ food: Hay) { }
+//  func eat(_ food: Hay) {
+//    print("\(Self.self) eat \(food)")
+//  }
 //}
 //
 //struct Horse {
-//  func eat(_ food: Carrot) { }
+//  func eat(_ food: Carrot) {
+//    print("\(Self.self) eat \(food)")
+//  }
 //}
 //
 //struct Chicken {
-//  func eat(_ food: Grain) { }
+//  func eat(_ food: Grain) {
+//    print("\(Self.self) eat \(food)")
+//  }
 //}
 //
 //
@@ -30,24 +36,18 @@
 //    let alfalfa = Hay.grow()
 //    let food = alfalfa.harvest()
 //    animal.eat(food)
-//
-//    print("\(animal) eat \(food)")
 //  }
 //
 //  func feed(_ animal: Horse) {
 //    let root = Carrot.grow()
 //    let food = root.harvest()
 //    animal.eat(food)
-//
-//    print("\(animal) eat \(food)")
 //  }
 //
 //  func feed(_ animal: Chicken) {
 //    let wheat = Grain.grow()
 //    let food = wheat.harvest()
 //    animal.eat(food)
-//
-//    print("\(animal) eat \(food)")
 //  }
 //}
 //
@@ -58,7 +58,6 @@
 //// 소는 Alfalfa가 자라서 수확된 Hay를 먹음
 //// 말은 Root가 자라서 수확된 Carrot을 먹음
 //// 닭은 Wheat가 자라서 수확된 Grain을 먹음
-//
 //
 //struct Hay {
 //  static func grow() -> Alfalfa {
@@ -96,5 +95,3 @@
 //    return Grain()
 //  }
 //}
-//
-//

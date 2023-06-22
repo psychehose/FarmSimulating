@@ -17,46 +17,52 @@
 //
 //class Cow: Animal<Hay> {
 //  override func eat(_ food: Hay) {
+//    print("\(Self.self) eat \(food)")
 //  }
 //}
 //
 //class Horse: Animal<Carrot> {
 //  override func eat(_ food: Carrot) {
-//    
+//    print("\(Self.self) eat \(food)")
 //  }
 //
 //}
 //
 //class Chicken: Animal<Grain> {
 //  override func eat(_ food: Grain) {
-//
+//    print("\(Self.self) eat \(food)")
 //  }
 //}
 //
 //
 //struct Farm {
-//  func feed(_ animal: Cow) {
-//    let alfalfa = Hay.grow()
-//    let food = alfalfa.harvest()
-//    animal.eat(food)
+//  func feed<T>(_ animal: Animal<T>) where T: Any {
 //
-//    print("\(animal) eat \(food)")
-//  }
+//    if animal is Cow {
+//      let alfalfa = Hay.grow()
+//      let food = alfalfa.harvest()
+//      animal.eat(food as! T)
 //
-//  func feed(_ animal: Horse) {
-//    let root = Carrot.grow()
-//    let food = root.harvest()
-//    animal.eat(food)
+//      return
+//    }
 //
-//    print("\(animal) eat \(food)")
-//  }
+//    if animal is Horse {
+//      let root = Carrot.grow()
+//      let food = root.harvest()
+//      animal.eat(food as! T)
 //
-//  func feed(_ animal: Chicken) {
-//    let wheat = Grain.grow()
-//    let food = wheat.harvest()
-//    animal.eat(food)
+//      return
+//    }
 //
-//    print("\(animal) eat \(food)")
+//    if animal is Chicken {
+//      let wheat = Grain.grow()
+//      let food = wheat.harvest()
+//      animal.eat(food as! T)
+//
+//      return
+//    }
+//
+//    fatalError("올바른 동물 타입이 아닙니다.")
 //  }
 //}
 //
@@ -105,4 +111,3 @@
 //    return Grain()
 //  }
 //}
-//
